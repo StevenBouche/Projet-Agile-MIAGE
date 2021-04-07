@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  forumsservice:
+    image: ${DOCKER_REGISTRY-}forumsservice
+    build:
+      context: .
+      dockerfile: ForumsService/Dockerfile
+  usersservice:
+    image: ${DOCKER_REGISTRY-}usersservice
+    build:
+      context: .
+      dockerfile: UsersService/Dockerfile
