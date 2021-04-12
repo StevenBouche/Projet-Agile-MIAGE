@@ -3,7 +3,7 @@ name: User story template
 about: Default template User story.
 title: "[User story]"
 labels: user story
-assignees: StevenBouche
+assignees: ''
 
 ---
 
