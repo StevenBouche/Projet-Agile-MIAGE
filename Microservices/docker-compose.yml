@@ -1,14 +1,14 @@
 version: '3.4'
 
 services:
-  mongoUserq:
-    container_name: mongoUserq
+  mongoApp:
+    container_name: mongoApp
     image: mongo:latest
     restart: always
     volumes:
-      - ./UserqDB/db:/data/db
+      - ./mongodb/db:/data/db
     ports:
-      - "27018:27017"
+      - "27017:27017"
   forumsservice:
     image: ${DOCKER_REGISTRY-}forumsservice
     build:

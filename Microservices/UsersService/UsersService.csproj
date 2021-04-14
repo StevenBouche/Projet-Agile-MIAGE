@@ -8,7 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="MongoDB.Bson" Version="2.12.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authentification\Authentification.csproj" />
+    <ProjectReference Include="..\ConfigPolicy\ConfigPolicy.csproj" />
+    <ProjectReference Include="..\IpConfig\IpConfig.csproj" />
+    <ProjectReference Include="..\MongoDBAccess\MongoDBAccess.csproj" />
   </ItemGroup>
 
 </Project>

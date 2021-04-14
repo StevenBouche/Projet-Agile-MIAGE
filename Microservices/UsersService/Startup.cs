@@ -1,16 +1,16 @@
+using Authentification;
+using ConfigPolicy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using MongoDBAccess;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using UsersService.Models;
+using UsersService.Services;
 
 namespace UsersService
 {
@@ -27,6 +27,20 @@ namespace UsersService
         public void ConfigureServices(IServiceCollection services)
         {
 
+            AuthConfig.Configure(services, Configuration);
+
+            PolicyOrigin.ConfigureServicesPolicyUI(services, new String[] { "http://localhost:4200"});
+
+            //Load mongodb settings in RestaurantDatabaseSetting where is in appsettings.json with name : RestaurantDatabaseSetting
+            services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
+            //Define an interface who serve setting mongodb access
+            services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+            //Define Restaurant service data access 
+            services.AddTransient<IMongoDBContext<Account>, MongoDBContext<Account, IDatabaseSettings>>();
+
+            services.AddTransient<IJwtManager, JwtManager>();
+            services.AddTransient<IUsersManager, UsersManager>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -37,6 +51,7 @@ namespace UsersService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,9 +59,13 @@ namespace UsersService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UsersService v1"));
             }
 
-            app.UseHttpsRedirection();
+            PolicyOrigin.ConfigureAppPolicyUI(app);
+
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
