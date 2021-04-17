@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MongoDBAccess
 {
-    public abstract class DatabaseSettings : IDatabaseSettings
+    public class DatabaseSettings : IDatabaseSettings
     {
         public string CollectionName { get; set; }
         public string ConnectionString { get; set; }
