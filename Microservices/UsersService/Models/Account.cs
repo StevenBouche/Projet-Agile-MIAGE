@@ -54,7 +54,7 @@ namespace UsersService.Models
         {
             this.Pseudo = view.Pseudo;
             this.Email = view.Email;
-           // this.Profil = view.Profil; TODO
+            this.Profil = UserProfil.CreateUserProfilFromView(view.Profil);
         }
     }
 }

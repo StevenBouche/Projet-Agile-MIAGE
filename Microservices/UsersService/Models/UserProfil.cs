@@ -30,6 +30,17 @@ namespace User.Model.Users
                 Role = this.Role
             };
         }
+
+        public static UserProfil CreateUserProfilFromView(ProfilView view)
+        {
+            return new UserProfil()
+            {
+                FirstName = view.FirstName,
+                LastName =view.LastName,
+                BirthdayDate = view.BirthdayDate,
+                Role = view.Role,
+            };
+        }
     }
 
 }
