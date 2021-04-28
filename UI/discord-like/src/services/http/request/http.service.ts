@@ -1,3 +1,5 @@
+import { SignUpResult } from './../../../models/signup/signup-model';
+import { SignUpData } from './../../../data/signup/signup-data';
 import { LoginData } from './../../../data/auth/auth-data';
 import { environment } from './../../../environments/environment';
 import { LoginResult } from './../../../models/auth/auth-model';
@@ -16,6 +18,18 @@ export class HttpService {
       email: data.email,
       password: data.password,
       addressIp: data.adressIP,
+    });
+  }
+
+  signUp(data: SignUpData): Observable<SignUpResult> {
+    return this.http.post<SignUpResult>(`${environment.apiUrl}/Account`, {
+      firstName: data.firstName,
+      LastName: data.LastName,
+      email: data.email,
+      password: data.password,
+      addressIP: data.addressIP,
+      pseudo: data.pseudo,
+      image: data.image,
     });
   }
 }
