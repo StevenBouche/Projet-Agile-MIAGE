@@ -47,8 +47,8 @@ namespace ForumsService
             services.AddSingleton<CacheUserWs>();
             services.AddTransient<IForumManagerView, ForumManager>();
             services.AddTransient<IForumManager, ForumManager>();
-            //services.AddTransient<IChannelManagerView, ChannelManager>();
-            //services.AddTransient<IChannelManager, ChannelManager>();
+            services.AddTransient<IChannelManagerView, ChannelsManager>();
+            services.AddTransient<IChannelManager, ChannelsManager>();
             //services.AddTransient<IMessageManagerView, MessageManager>();
             //services.AddTransient<IMessageManager, MessageManager>();
             //services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
