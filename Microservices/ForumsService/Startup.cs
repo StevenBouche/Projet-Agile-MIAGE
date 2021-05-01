@@ -49,10 +49,9 @@ namespace ForumsService
             services.AddTransient<IForumManager, ForumManager>();
             services.AddTransient<IChannelManagerView, ChannelsManager>();
             services.AddTransient<IChannelManager, ChannelsManager>();
-            //services.AddTransient<IMessageManagerView, MessageManager>();
-            //services.AddTransient<IMessageManager, MessageManager>();
-            //services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
-            
+            services.AddTransient<IMessageManagerView, MessageManager>();
+            services.AddTransient<IMessageManager, MessageManager>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
