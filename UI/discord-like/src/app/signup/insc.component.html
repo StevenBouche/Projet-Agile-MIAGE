@@ -3,54 +3,46 @@
 </nav>
 
 <div *ngIf="!loading; else spinner" class="container">
-  <div class="login">
-    <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()" id="login">
-      <header>
-        <h1>Allez viens !</h1>
-        <p>On est bien, bien, bien, bien !</p>
-      </header>
-
-      <!-- <div [ngClass]="{ error: getMail?.invalid && (getMail?.touched || getMail?.dirty) }" class="form__group form__group--email">
-        <label for="email">Email <span class="error__message"> - Email invalide</span></label>
-        <input class="form-control" required formControlName="email" type="text" id="email" />
+  <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <div class="col-sm"></div>
+      <div class="col-sm"></div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm">
+        <div class="form__group form__group--firstName">
+          <label for="firstName">Prénom </label>
+          <input class="form-control" required formControlName="firstName" type="text" id="firstName" />
+        </div>
+        <div class="form__group form__group--LastName">
+          <label for="LastName">Nom </label>
+          <input class="form-control" required formControlName="LastName" type="text" id="LastName" />
+        </div>
+        <div class="form__group form__group--email">
+          <label for="email">Email </label>
+          <input class="form-control" required formControlName="email" type="text" id="email" />
+        </div>
       </div>
-
-      <div [ngClass]="{ error: getPwd?.invalid && (getPwd?.touched || getPwd?.dirty) }" class="form__group form__group--password">
-        <label for="pwd">Mot de passe <span class="error__message"> - Mot de passe invalide</span></label>
-        <input class="form-control" required formControlName="pwd" type="password" id="pwd" />
-      </div> -->
-
-      <div class="form__group form__group--firstName">
-        <label for="firstName">Prénom </label>
-        <input class="form-control" required formControlName="firstName" type="text" id="firstName" />
+      <div class="col-sm">
+        <div class="form__group form__group--password">
+          <label for="password">Mot de passe </label>
+          <input class="form-control" required formControlName="password" type="text" id="password" />
+        </div>
+        <div class="form__group form__group--pseudo">
+          <label for="pseudo">Pseudo </label>
+          <input class="form-control" required formControlName="pseudo" type="text" id="pseudo" />
+        </div>
+        <div class="form__group form__group--image">
+          <label for="image">Avatar </label>
+          <input class="form-control" required formControlName="image" type="text" id="image" />
+        </div>
       </div>
-      <div class="form__group form__group--LastName">
-        <label for="LastName">Nom </label>
-        <input class="form-control" required formControlName="LastName" type="text" id="LastName" />
-      </div>
-      <div class="form__group form__group--email">
-        <label for="email">Email </label>
-        <input class="form-control" required formControlName="email" type="text" id="email" />
-      </div>
-      <div class="form__group form__group--password">
-        <label for="password">Mot de passe </label>
-        <input class="form-control" required formControlName="password" type="text" id="password" />
-      </div>
-      <div class="form__group form__group--pseudo">
-        <label for="pseudo">Pseudo </label>
-        <input class="form-control" required formControlName="pseudo" type="text" id="pseudo" />
-      </div>
-      <div class="form__group form__group--image">
-        <label for="image">Avatar </label>
-        <input class="form-control" required formControlName="image" type="text" id="image" />
-      </div>
-
-      <div class="form__group">
-        <input class="btn" id="btnLogin" type="submit" value="S'inscrire" />
-        <!-- [disabled]="getMail?.invalid || getPwd?.invalid" -->
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="form__group">
+      <input class="btn" id="btnLogin" type="submit" value="S'inscrire" />
+      <!-- [disabled]="getMail?.invalid || getPwd?.invalid" -->
+    </div>
+  </form>
 </div>
 
 <ng-template #spinner>
