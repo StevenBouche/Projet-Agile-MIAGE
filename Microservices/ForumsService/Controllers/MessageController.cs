@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace ForumsService.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class MessageController : ControllerBase
