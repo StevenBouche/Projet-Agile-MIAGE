@@ -1,0 +1,101 @@
+
+<div class="flex text-white h-12">
+    <!-- NAVBAR CHANNEL -->
+    <div class="flex-1 bg-gray-800 flex items-center justify-between border-b border-gray-900 px-4">
+
+        <!-- PRINT CURRENT CHANNEL -->
+        <div class="flex items-center">
+            <div class="text-gray-500 text-2xl">#</div>
+            <div class="ml-2 text-sm text-white">Search Forum</div>
+        </div>
+
+        <!-- TOOLS -->
+        <div class="flex items-center">
+            <a href="#" class="ml-4">
+                <form action="#" class="relative">
+                    <input type="text" placeholder="Search" class="rounded bg-gray-900 text-gray-200 text-xs px-2 py-1">
+                    <span class="absolute right-0 top-0 mr-1" style="top:6px">
+                        <svg class="w-4 h-4 text-gray-500 hover:text-gray-200" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg>
+                    </span>
+                </form>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="flex-1 flex justify-between overflow-y-hidden pr-8">
+
+    <!--LIST MESSAGE ITEM AND SENDEUR -->
+    <div class="bg-gray-700 flex-1 flex flex-col justify-between ">
+
+        <!--LIST MESSAGE ITEM -->
+        <div class="chat text-sm text-gray-400">
+
+
+
+            <form [formGroup]="createForm" (ngSubmit)="onSubmitRegister()">
+                <div class="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+
+                  <div class="-mx-3 md:flex mb-6">
+                    <div class="md:w-full px-3">
+                      <label class="uppercase tracking-wide text-white text-xs font-bold mb-2" for="forum-name">
+                        Forum name*
+                      </label>
+                      <input formControlName="name" required class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="forum-name" type="text" placeholder="Name...">
+                    </div>
+                  </div>
+                  <div class="-mx-3 md:flex mb-6">
+                    <div class="md:w-full px-3">
+                      <label class="uppercase tracking-wide text-white text-xs font-bold mb-2" for="forum-desc">
+                        Forum description*
+                      </label>
+                      <input formControlName="description" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="forum-desc" type="text" placeholder="Description...">
+                    </div>
+                  </div>
+                  <div class="-mx-3 md:flex mt-2">
+                    <img *ngIf="imgURL" [src]="imgURL" alt="{{file.name}}" class="w-12 h-12 rounded-full mx-auto">
+                    <div class="md:w-full px-3">
+                        <button type="button" (click)="onClick()"
+                        class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full"
+                        >Add a photo</button>
+                        <input formControlName="image" type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" />
+
+                    </div>
+                  </div>
+                  <div class="-mx-3 md:flex mt-2">
+                    <div class="md:w-full px-3">
+                      <button type="submit" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                        Create forum
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+
+
+        </div>
+
+        <!--SENDEUR TOOLBAR MESSAGE -->
+        <div class="bg-gray-800 py-4 flex items-center">
+            <button class="px-2 py-2 h-10 bg-gray-700 rounded-l text-gray-500 hover:text-white border-r border-gray-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="plus-circle"><rect width="24" height="24" opacity="0"></rect><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm3 11h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V9a1 1 0 0 1 2 0v2h2a1 1 0 0 1 0 2z"></path></g></g></svg>
+            </button>
+            <button class="px-2 py-2 h-10 bg-gray-700 rounded-l text-gray-500 hover:text-white border-r border-gray-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 512 512"><path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm448-288h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40zm-72 320h160c17.7 0 32-14.3 32-32V320H288v160z"></path></svg>
+            </button>
+            <button class="px-2 py-2 h-10 bg-gray-700 rounded-l text-gray-500 hover:text-white border-r border-gray-600">
+                <svg class="w-8 h-8" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><defs><path id="a" d="M24 24H0V0h24v24z"></path></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"></use></clipPath><path d="M11.5 9H13v6h-1.5zM9 9H6c-.6 0-1 .5-1 1v4c0 .5.4 1 1 1h3c.6 0 1-.5 1-1v-2H8.5v1.5h-2v-3H10V10c0-.5-.4-1-1-1zm10 1.5V9h-4.5v6H16v-2h2v-1.5h-2v-1z" clip-path="url(#b)"></path></svg>
+            </button>
+            <button class="px-2 py-2 h-10 bg-gray-700 rounded-l text-gray-500 hover:text-white border-r border-gray-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"></path></svg>
+            </button>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+

@@ -1,0 +1,68 @@
+<div class="form">
+
+      <ul class="tab-group">
+        <li class="tab" [class.active]="isRegister()"><a (click)="onClickRegister()">Sign Up</a></li>
+        <li class="tab" [class.active]="isLogin()"><a (click)="onClickLogin()">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <!-- SIGNUP FORM-->
+        <div id="signup" [class.hidden]="!isRegister()">
+          <h1>Sign Up for Free</h1>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterAsync(registerForm.value)">
+            <div class="top-row">
+              <div class="field-wrap">
+                <label [class.active]="registerData.firstName!=undefined">First Name<span class="req">*</span></label>
+                <input [(ngModel)]="registerData.firstName" type="text" required autocomplete="off" formControlName="firstName" />
+              </div>
+              <div class="field-wrap">
+                <label [class.active]="registerData.lastName!=undefined">Last Name<span class="req">*</span></label>
+                <input [(ngModel)]="registerData.lastName" type="text" required autocomplete="off" formControlName="lastName"/>
+              </div>
+            </div>
+            <div class="field-wrap">
+              <label [class.active]="registerData.pseudo!=undefined">Pseudo<span class="req">*</span></label>
+              <input [(ngModel)]="registerData.pseudo" type="text" required autocomplete="off" formControlName="pseudo"/>
+            </div>
+            <div class="field-wrap">
+              <label [class.active]="registerData.email!=undefined">Email Address<span class="req">*</span></label>
+              <input [(ngModel)]="registerData.email" type="email" required autocomplete="off" formControlName="email"/>
+            </div>
+            <div class="field-wrap">
+              <label [class.active]="registerData.password!=undefined">Set A Password<span class="req">*</span></label>
+              <input [(ngModel)]="registerData.password" type="password" required autocomplete="off" formControlName="password"/>
+            </div>
+            <div class="field-wrap">
+              <img *ngIf="imgURL" [src]="imgURL" alt="{{file.name}}" class="w-12 h-12 rounded-full mx-auto">
+              <button type="button" (click)="onClick()"
+              class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full"
+              >Add a photo</button>
+              <input type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" />
+            </div>
+            <button class="button button-block" type="submit">Get Started</button>
+          </form>
+        </div>
+
+        <!-- LOGIN FORM-->
+        <div id="login" [class.hidden]="!isLogin()">
+          <h1>Welcome Back!</h1>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginAsync(loginForm.value)">
+            <div class="field-wrap">
+              <label [class.active]="loginData.email!=undefined">Email Address<span class="req">*</span></label>
+              <input [(ngModel)]="loginData.email" type="email"required autocomplete="off" formControlName="email"/>
+            </div>
+            <div class="field-wrap">
+              <label [class.active]="loginData.password!=undefined"> Password<span class="req">*</span></label>
+              <input [(ngModel)]="loginData.password" type="password"required autocomplete="off" formControlName="password"/>
+            </div>
+            <button class="button button-block" type="submit">Log In</button>
+          </form>
+        </div>
+
+        <mat-progress-bar [class.hidden]="!isLoading" mode="indeterminate"></mat-progress-bar>
+
+      </div><!-- tab-content -->
+
+</div> <!-- /form -->
+

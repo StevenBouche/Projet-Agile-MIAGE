@@ -1,0 +1,31 @@
+<!-- USER PANEL -->
+<div class="bg-gray-850 px-3 py-2 flex items-center justify-between">
+
+    <!-- PRINT CURENT USER -->
+    <div class="flex items-center">
+        <a href="#"><img [src]="identity?.urlPicture" alt="avatar" class="w-8 h-8 rounded-full"></a>
+        <div class="text-xs ml-2">
+            <div class="text-white">{{identity?.pseudo}}</div>
+            <div class="text-gray-500 text-xxs">#{{identity?.email}}</div>
+        </div>
+    </div>
+
+    <!--TOOLS -->
+    <div class="flex items-center text-gray-500">
+        <a class="ml-3 {{color}} hover:text-white">
+          <svg class="w-5 h-5" fill="currentColor" width="30" height="30" viewBox="0 0 30 30">
+              <path d="M17,1h-2c-0.552,0-1,0.447-1,1v16.992h4V2C18,1.447,17.553,1,17,1z M11,7H9C8.448,7,8,7.447,8,8v10.992h4V8
+                C12,7.447,11.553,7,11,7z M5,13H3c-0.552,0-1,0.447-1,1v4.992h4V14C6,13.447,5.553,13,5,13z"/>
+          </svg>
+       </a>
+        <a (click)="onLogout()" class="ml-3 hover:text-white">
+          <svg class="w-5 h-5" fill="currentColor" width="30" height="30" viewBox="0 0 30 30">
+            <path d="M19,10l-6-5v3H6v4h7v3L19,10z M3,3h8V1H3C1.9,1,1,1.9,1,3v14c0,1.1,0.9,2,2,2h8v-2H3V3z"/>
+          </svg>
+        </a>
+    </div>
+
+
+</div>
+
+

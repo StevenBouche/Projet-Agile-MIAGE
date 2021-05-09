@@ -1,0 +1,48 @@
+<div class="flex-1 flex min-h-screen h-screen">
+
+    <div class="bg-gray-800 w-56 flex-none flex flex-col justify-between">
+
+        <div class="hashtag-bar text-sm leading-relaxed overflow-y-auto">
+
+            <div class="paramForum text-white h-12 bg-gray-800 w-56 flex-none flex items-center justify-between border-b border-gray-900 px-3 py-2" >
+                <!-- PRINT CURRENT FORUM -->
+                <button [class.b-gray-900]="displayParamForum" class="flex-none flex hover:bg-gray-900 rounded" (click)="onClickParamForum()">
+                    <span>{{forum?.name}}</span>
+                    <div>
+                        <svg [class.paramisshow]="!displayParamForum" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                            <path class="heroicon-ui" d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+
+            <!-- PARAM FORUM -->
+            <div class="border border-gray-900" [class.disabled]="!displayParamForum">
+
+                <ul class="px-2 py-3">
+                    <li class="text-gray-500 px-2">
+                      <h3 class="text-gray text-center">Forum description</h3>
+                      <span class="flex items-center text-center"><i>{{forum?.description}}</i></span>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="px-2 py-3">
+                <app-channelitem *ngFor="let channel of channels" [item]="channel"></app-channelitem>
+                <li class="text-gray-500 px-2 hover:text-gray-200">
+                    <span class="flex items-center mt-5">
+                        <button (click)="onNewChannel()" type="button" class="bg-gray-900 pl-2 pr-2">+</button>
+                        <input [(ngModel)] = "channelName" type="text" onfocus="this.value=''" class="ml-2 text-black" placeholder="Channel's name">
+                    </span>
+                </li>
+            </ul>
+
+        </div>
+
+        <app-userpanel class="bg-gray-850 px-3 py-2 flex items-center justify-between"> </app-userpanel>
+    </div>
+
+    <app-channelpanel class="flex-1 flex flex-col"></app-channelpanel>
+
+
+</div>
