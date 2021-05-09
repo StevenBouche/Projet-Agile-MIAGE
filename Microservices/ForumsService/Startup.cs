@@ -2,6 +2,7 @@ using Authentification;
 using ConfigPolicy;
 using ForumServices.Models;
 using ForumsService.Services;
+using ForumsService.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -52,6 +53,9 @@ namespace ForumsService
             services.AddTransient<IMessageManagerView, MessageManager>();
             services.AddTransient<IMessageManager, MessageManager>();
 
+            //Websocket
+            services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -73,10 +77,13 @@ namespace ForumsService
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<ForumHub>("/forumhub");
                 endpoints.MapControllers();
             });
         }
