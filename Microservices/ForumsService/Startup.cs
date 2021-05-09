@@ -77,6 +77,8 @@ namespace ForumsService
 
             app.UseRouting();
 
+            PolicyOrigin.ConfigureAppPolicyUI(app);
+
             app.UseAuthentication();
 
             app.UseAuthorization();

@@ -29,8 +29,6 @@ namespace UsersService.Controllers
             }
         }
 
-
-
         public AccountController(IUsersManager manager)
         {
             this.Manager = manager;
