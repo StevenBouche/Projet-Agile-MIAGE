@@ -14,7 +14,7 @@ namespace IpConfig
         public string ProdHostName { get; set; }
 
         public static bool IsDev = true;
-        public static string URL = IsDev ? "http://localhost:7000" : "http://51.210.181.145:7000";
+        public static string URL = IsDev ? "http://localhost:4001" : "http://51.210.181.145:7000";
 
     }
 }
